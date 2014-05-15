@@ -2,10 +2,12 @@
 
 import oauth2 as oauth
 import urllib2 as urllib
+import HTMLParser
 import json
 
 access_token_key = ""
 access_token_secret = ""
+
 
 consumer_key = ""
 consumer_secret = ""
@@ -47,17 +49,43 @@ def send_tweet():
 	parsed_input = process_input(uinput)
 	parameters = {"status": parsed_input}
 	response = twitterreq(url, "POST", parameters)
+	print "Tweeted: "+parsed_input+"\n"
+
+def get_my_timeline():
+	print "\n"
+	html_parser =  HTMLParser.HTMLParser()
+	url = "https://api.twitter.com/1.1/statuses/home_timeline.json"
+	parameters = {"count": 50}
+	response = twitterreq(url, "GET", parameters)
+	resp = json.loads(response.read())
+	for line in resp:
+		print "@"+line["user"]["screen_name"]+ ": "+html_parser.unescape(line["text"])
+		print "\n"
 
 def process_input(uinput):
 	if len(uinput) > 140:
 		return uinput[:141]
 	return uinput
 
-
 def debug_response(resp):
 	for line in resp:
 		print line
 
+def main_menu():
+	while (True):
+		choice = raw_input("Here are your options following options:"+"\n"+
+			"Type 'tweet' to start composing a new tweet"+"\n" +
+			"Type 'timeline' to get your 50 most recent tweets on your timeline"+"\n" +
+			"Type 'exit' to exit"+"\n").strip()
+		if choice == "tweet":
+			send_tweet()
+		elif choice == "timeline":
+			get_my_timeline()
+		elif choice == "exit":
+			return
+		else:
+			print "\n"
+
 
 if __name__ == '__main__':
-	send_tweet()
+	main_menu() 
