@@ -11,7 +11,7 @@ Dependencies: oauth2 library for Python.
 
 You'll need to register the script as your own app at Twitter's developer center. Yes, this means that you'll have to supply your own
 customer key and secret as well as generate your own access token and keys. To add these, just edit the code where relevant. Here's a 
-helpful guide to register and setup a dev account: http://iag.me/socialmedia/how-to-create-a-twitter-app-in-8-easy-steps/. Note that the script needs `read and write` permissions.
+helpful guide to register and setup a dev account: http://iag.me/socialmedia/how-to-create-a-twitter-app-in-8-easy-steps/. Note that the script needs `read` and `write` permissions.
 
 If you want to avoid typing `python termtweet.py` every time, give it execute permissions.
 
