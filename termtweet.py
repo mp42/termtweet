@@ -15,8 +15,8 @@ oauth_consumer = oauth.Consumer(key=consumer_key, secret=consumer_secret)
 
 signature_method_hmac_sha1 = oauth.SignatureMethod_HMAC_SHA1()
 
-http_handler = urllib.HTTPHandler(debuglevel = _debug)
-https_handler = urllib.HTTPSHandler(debuglevel = _debug)
+http_handler = urllib.HTTPHandler(debuglevel = 0)
+https_handler = urllib.HTTPSHandler(debuglevel = 0)
 
 '''
 Construct, sign and open twitter session
