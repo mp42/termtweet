@@ -10,8 +10,6 @@ access_token_secret = ""
 consumer_key = ""
 consumer_secret = ""
 
-_debug = 0
-
 oauth_token = oauth.Token(key=access_token_key, secret=access_token_secret)
 oauth_consumer = oauth.Consumer(key=consumer_key, secret=consumer_secret)
 
